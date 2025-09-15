@@ -34,7 +34,8 @@ export default function KanbanBoard() {
   const dispatch = useDispatch();
 
   const filteredTasks = applyFiltersAndSorting(tasks, filter, sort);
-
+const darkMode = useSelector((state: RootState) => state.theme.darkMode);
+ 
   const onDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (over && active.id !== over.id) {
@@ -44,7 +45,7 @@ export default function KanbanBoard() {
 
   return (
     <DndContext onDragEnd={onDragEnd}>
-      <div className="flex gap-4">
+      <div className={`flex gap-4 ${darkMode?"bg-black text-white":"bg-white text-black"}`}>
         <Column
           title="Todo"
           status="todo"

@@ -1,69 +1,57 @@
-# React + TypeScript + Vite
+Kanban Board (React + TypeScript + Redux)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Demo
 
-Currently, two official plugins are available:
+👉 View the app here
+https://68c3f1f6fb22a349079ea356--kanbanbooard.netlify.app/
+Instructions on how to run the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clone the repository and navigate into it.
 
-## Expanding the ESLint configuration
+Install dependencies using npm install.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Run the development server with npm run dev.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Open http://localhost:5173 in your browser to use the app.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Features Implemented
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Kanban board with three columns: Todo, In Progress, and Done.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Ability to add new tasks with title, description, priority, and due date.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Edit tasks in a modal (update title, description, priority, and due date).
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Delete tasks from the board.
+
+Drag-and-drop functionality using @dnd-kit/core to move tasks between columns.
+
+Filtering options to view:
+
+All tasks
+
+Only high-priority tasks
+
+Tasks due today
+
+Sorting options within each column by due date or priority.
+
+LocalStorage persistence so tasks remain saved after refreshing the page.
+
+Progress bar that tracks overall completion.
+
+Dark mode toggle for theme switching.
+
+Challenges Faced and Solutions
+
+Editing tasks conflicted with drag-and-drop:
+Solved by wrapping edit actions in stopPropagation() and using a separate modal component.
+
+Tasks disappearing on page refresh:
+Fixed by syncing Redux state with localStorage using a custom middleware.
+
+TypeScript errors with task priority and updates:
+Resolved by explicitly typing priority as "Low" | "Medium" | "High" and defining a proper Task interface.
+
+Drag-and-drop interfering with button clicks:
+Prevented drag events from firing when clicking edit/delete buttons by handling event bubbling.
