@@ -1,57 +1,133 @@
-Kanban Board (React + TypeScript + Redux)
+# 📝 Mini Kanban Board --- React Developer Assignment
 
-Live Demo
+## 📌 Objective
 
-👉 View the app here
-https://68c3f1f6fb22a349079ea356--kanbanbooard.netlify.app/
-Instructions on how to run the project
+The goal of this project is to build a **Mini Kanban Board application**
+using React and TypeScript. The application demonstrates modern React
+fundamentals, including functional components, hooks, Redux Toolkit for
+scalable state management, and efficient local persistence.
 
-Clone the repository and navigate into it.
+The board consists of **three columns** --- **Todo, In Progress, and
+Done** --- and includes a variety of features for managing tasks.
 
-Install dependencies using npm install.
+------------------------------------------------------------------------
 
-Run the development server with npm run dev.
+## 🚀 Live Demo
 
-Open http://localhost:5173 in your browser to use the app.
+👉 [View the app here](https://kanbanbooard.netlify.app/)
 
-Features Implemented
+------------------------------------------------------------------------
 
-Kanban board with three columns: Todo, In Progress, and Done.
+## 🚀 Features Implemented
 
-Ability to add new tasks with title, description, priority, and due date.
+### ✅ Core Functionality
 
-Edit tasks in a modal (update title, description, priority, and due date).
+-   Three distinct columns: **Todo, In Progress, and Done**\
+-   Add a new task with a **title** and **description**\
+-   **Drag-and-drop** functionality (using `react-beautiful-dnd` or
+    equivalent) to move tasks between columns
 
-Delete tasks from the board.
+### ✏️ Task Details & Editing
 
-Drag-and-drop functionality using @dnd-kit/core to move tasks between columns.
+-   Each task has:
+    -   **Title** (string)\
+    -   **Description** (string)\
+    -   **Priority** (Low, Medium, High)\
+    -   **Due date** (Date/String)\
+-   Tasks can be **edited** (title, description, priority, due date)\
+-   Tasks can be **deleted**
 
-Filtering options to view:
+### 💾 Data Persistence
 
-All tasks
+-   All tasks are saved to and loaded from **localStorage**\
+-   The board state is preserved across refreshes
 
-Only high-priority tasks
+### 🔍 Filtering & Sorting
 
-Tasks due today
+-   **Filters:**
+    -   Show all tasks\
+    -   Show only high-priority tasks\
+    -   Show tasks due today\
+-   **Sorting:**
+    -   Sort tasks by **due date**\
+    -   Sort tasks by **priority**
 
-Sorting options within each column by due date or priority.
+### 🌙 Extra Features (Optional, if implemented)
 
-LocalStorage persistence so tasks remain saved after refreshing the page.
+-   **Dark Mode** toggle (preference saved in localStorage)\
 
-Progress bar that tracks overall completion.
+-   **Search bar** to filter tasks by title\
 
-Dark mode toggle for theme switching.
+-   **Progress Bar** showing completion percentage:
 
-Challenges Faced and Solutions
+        (# of tasks in "Done") / (Total # of tasks) * 100%
 
-Editing tasks conflicted with drag-and-drop:
-Solved by wrapping edit actions in stopPropagation() and using a separate modal component.
+------------------------------------------------------------------------
 
-Tasks disappearing on page refresh:
-Fixed by syncing Redux state with localStorage using a custom middleware.
+## 🛠️ Tech Stack
 
-TypeScript errors with task priority and updates:
-Resolved by explicitly typing priority as "Low" | "Medium" | "High" and defining a proper Task interface.
+-   **React** (Functional Components + Hooks)\
+-   **TypeScript** (Type safety & maintainability)\
+-   **Redux Toolkit** (Predictable and scalable state management)\
+-   **react-beautiful-dnd** (Drag-and-drop functionality)\
+-   **date-fns** (Date handling)\
+-   **Tailwind CSS / CSS Modules** (Styling, if used)
 
-Drag-and-drop interfering with button clicks:
-Prevented drag events from firing when clicking edit/delete buttons by handling event bubbling.
+------------------------------------------------------------------------
+
+## 📂 Project Setup
+
+### 1. Clone Repository
+
+``` bash
+git clone https://github.com/<your-username>/mini-kanban-board.git
+cd mini-kanban-board
+```
+
+### 2. Install Dependencies
+
+``` bash
+npm install
+```
+
+### 3. Run Development Server
+
+``` bash
+npm run dev
+```
+
+### 4. Open in Browser
+
+Visit: <http://localhost:5173>
+
+------------------------------------------------------------------------
+
+## 📖 How to Use
+
+1.  Add new tasks with title, description, priority, and due date.\
+2.  Drag and drop tasks between **Todo, In Progress, and Done**.\
+3.  Edit or delete existing tasks.\
+4.  Use **filters and sorting controls** to manage task visibility.\
+5.  Toggle **dark mode** (if implemented).\
+6.  Track progress with the progress bar.
+
+------------------------------------------------------------------------
+
+## 🏆 Challenges & Solutions
+
+-   **Drag-and-drop management**: Used `react-beautiful-dnd` to simplify
+    implementation.\
+-   **State persistence**: Implemented **localStorage syncing** with
+    Redux store.\
+-   **Filtering & sorting logic**: Centralized logic in Redux selectors
+    for clean code.\
+-   **Type safety**: Used **TypeScript interfaces & enums** for task
+    properties.
+
+------------------------------------------------------------------------
+
+## 📌 Deliverables
+
+-   GitHub repository with the complete solution\
+-   This `README.md` file (setup instructions + feature list +
+    challenges)
